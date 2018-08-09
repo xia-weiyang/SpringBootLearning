@@ -7,7 +7,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -23,14 +24,14 @@ public class TestControllerTest {
 
     @Test
     public void queryTest() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/query"))
+        mvc.perform(get("/query"))
                 .andExpect(status().isOk());
     }
 
 
     @Test
     public void bodyTest() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/body").content("test"))
+        mvc.perform(post("/body").content("test"))
                 .andExpect(status().isOk());
     }
 }
